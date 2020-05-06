@@ -56,11 +56,20 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="corzinha flex-center position-ref full-height">
+        <img src="{{asset('storage/gegeu.png')}}">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">Dashboard</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -70,7 +79,16 @@
                     @endauth
                 </div>
             @endif
-            vendemos bolos
         </div>
     </body>
+    <style>
+        .corzinha {
+            width: 100%;
+            background-color:#df91e0;
+        }
+
+        .links a {
+            font-weight: 600;
+        }
+    </style>
 </html>
