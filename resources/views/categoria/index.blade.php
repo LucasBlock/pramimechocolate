@@ -1,39 +1,38 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Nova categoria</title>
-
-    </head>
-    <body>
-        <h1>Categoria</h1>
-        <button>
-            <a href="/categorias/novo">Novo</a>
-        </button>
-        <table>
-            <thead>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Ações</th>
+@extends('dashboard')
+@section('content')
+        <div class="list">
+            <h1>Categorias</h1>
+            <div>
+                <a class="btn btn-primary" title="Novo" href="{{route('categorias.novo')}}">
+                    <span class="material-icons">
+                        add
+                    </span>
+                </a>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Ações</th>
             </thead>
             <tbody>
-                @foreach($categorias as $categoria)
-                    <tr>
-                        <td>{{$categoria->id}}</td>
-                        <td>{{$categoria->nome}}</td>
-                        <td>
-                            <a href="/categorias/{{$categoria->id}}">Visualizar</a>
-                            <a href="/categorias/{{$categoria->id}}/editar">Editar</a>
-                            <a href="/categorias/{{$categoria->id}}/delete">Excluir</a>
-                        </td>
-                    </tr>
-                @endforeach
+            @foreach($categorias as $categoria)
+                <tr>
+                    <td>{{$categoria->id}}</td>
+                    <td>{{$categoria->nome}}</td>
+                    <td>
+                        <a href="{{route('categorias.editar', $categoria->id)}}" title="Editar">
+                            <span class="material-icons">edit</span>
+                        </a>
+                        <a href="{{route('categorias.deletar', $categoria->id)}}" title="Excluir">
+                            <span class="material-icons">delete</span>
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
-    </body>
-</html>
 
 <style>
     #form {
@@ -45,5 +44,10 @@
         margin-left: 10px;
     }
 
+    .list {
+        display:flex;
+        justify-content: space-between;
+    }
 
 </style>
+@endsection

@@ -61,7 +61,7 @@ class ProdutoController extends Controller
                 }
             }
         }
-        return redirect()->route('produtos');
+        return redirect()->route('produtos')->with('success', 'Produto criado com sucesso');
     }
 
     /**
@@ -106,7 +106,7 @@ class ProdutoController extends Controller
         $produto->fill($request->all());
         $produto->save();
 
-        return redirect()->route('produtos');
+        return redirect()->route('produtos')->with('success','Produto atualizado com sucesso');
     }
 
     /**
@@ -121,6 +121,6 @@ class ProdutoController extends Controller
 
         $produto->delete();
 
-        return redirect()->route('produtos');
+        return redirect()->route('produtos')->with('success', 'Produto excluido com sucesso');
     }
 }

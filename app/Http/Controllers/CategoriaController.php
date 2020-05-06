@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Categoria;
+use App\Produto;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -39,7 +40,7 @@ class CategoriaController extends Controller
     {
         Categoria::create($request->all());
 
-        return redirect()->route('categorias');
+        return redirect()->route('categorias')->with('success','Categoria criada com sucesso');
     }
 
     /**
@@ -84,7 +85,7 @@ class CategoriaController extends Controller
         $categoria->nome = $campos['nome'];
         $categoria->save();
 
-        return redirect()->route('categorias');
+        return redirect()->route('categorias')->with('success', 'Categoria atualizada com sucesso');
     }
 
     /**
@@ -95,10 +96,16 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
+        $produto = Produto::where('categoria_id', $id);
+
+        if ($produto) {
+            return back()->with('error', 'Não foi possível excluir a categoria, existe um produto vinculado a está categoria');
+        }
+
         $categoria = Categoria::findOrFail($id);
 
         $categoria->delete();
 
-        return redirect()->route('categorias');
+        return redirect()->route('categorias')->with('success', 'Categoria excluida com sucesso');
     }
 }

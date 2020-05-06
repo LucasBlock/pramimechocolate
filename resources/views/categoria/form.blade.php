@@ -1,32 +1,37 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Nova categoria</title>
-
-    </head>
-    <body>
+@extends('dashboard')
+@section('content')
+    <div class="list">
         <h1>Nova Categoria</h1>
-        <button> <a href="/categorias"> Voltar </a> </button>
-        <form id="form" method="POST" action="/categorias">
-            @csrf
-            <input name="nome" type="text" max="255" required>
-            <button type="submit">Enviar</button>
-        </form>
-    </body>
-</html>
 
-<style>
-    #form {
-        display:flex;
-        background-color: #fafafa;
-    }
+        <a href="{{route('categorias')}}">
+            <span class="material-icons">
+                undo
+            </span>
+        </a>
+    </div>
+    <form id="form" method="POST" id="form" action="{{route('categorias.salvar')}}">
+        @csrf
+        <div class="input-group mb-3 form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Nome</span>
+            </div>
+            <input name="nome" max="255" required type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    <style>
+        #form {
+            display:flex;
+            background-color: #fafafa;
+        }
 
-    #form button {
-        margin-left: 10px;
-    }
+        #form button {
+            margin-left: 10px;
+        }
 
-
-</style>
+        .list {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+@endsection
