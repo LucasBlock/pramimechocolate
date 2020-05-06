@@ -24,6 +24,7 @@
             <a class="navbar-brand" href="{{route('pedidos')}}">Pedidos</a>
             <a class="navbar-brand" href="{{route('produtos')}}">Produtos</a>
             <a class="navbar-brand" href="{{route('categorias')}}">Categorias</a>
+            <a class="navbar-brand" href="{{route('clientes')}}">Clientes</a>
         </nav>
         <div class="content-page">
             <!-- Start content -->
