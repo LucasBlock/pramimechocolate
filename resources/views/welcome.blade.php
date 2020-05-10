@@ -1,94 +1,42 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Bolos onlines</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-            .full-height {
-                height: 100vh;
-            }
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-            .position-ref {
-                position: relative;
-            }
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-            .content {
-                text-align: center;
-            }
-            .title {
-                font-size: 84px;
-            }
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="corzinha flex-center position-ref full-height">
-        <img src="{{asset('storage/gegeu.png')}}">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Dashboard</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Cadastro</a>
-                        @endif
-                    @endauth
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
+    <title>Pra Mim É Chocolate</title>
+</head>
+<body>
+    <div class="login">
+        <div class="login-form">
+            <div class="login-form-wrapper">
+                <div class="login-title">
+                    <h2>Login</h2>
+                    <a href="#">Cadastro</a>
                 </div>
-            @endif
-        </div>
-    </body>
-    <style>
-        .corzinha {
-            width: 100%;
-            background-color:#df91e0;
-        }
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
 
-        .links a {
-            font-weight: 600;
-        }
-    </style>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Seu email">
+                    </div>
+                    <div class="form-group">
+                      <label for="senha">Senha</label>
+                      <input type="password" class="form-control" id="senha" name="password" placeholder="Sua senha">
+                    </div>
+                    <button type="submit" class="btn">Entrar</button>
+                </form>
+            </div>
+        </div>
+        <div class="banner-login">
+            <img src="images/pramimechocolate-logo.png" alt="">
+            <h2>Pra Mim É Chocolate</h2>
+        </div>
+    </div>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/fontawesome/js/all.min.js"></script>
+</body>
 </html>

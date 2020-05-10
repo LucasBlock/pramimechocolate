@@ -1,0 +1,23 @@
+main {
+    display: block;
+    height: 100%;
+    width: calc(100% - 300px);
+    background-color: #f7f7f7;
+}
+
+main .main-content {
+    padding: 30px;
+    width: 100%;
+    height: calc(100% - 70px);
+    overflow-y: auto;
+}
+
+.main-content .panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+}

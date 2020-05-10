@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
 
-		<link rel="shortcut icon" href="{{ asset('images/favicon_1.ico') }}">
-        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
         <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <title>Titulo</title>
@@ -15,37 +16,55 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-	</head>
-
-	<body>
-
-        <nav class="navbar sticky-top navbar-light bg-light">
-            <a class="navbar-brand" href="/">Página Inicial</a>
-            <a class="navbar-brand" href="{{route('pedidos')}}">Pedidos</a>
-            <a class="navbar-brand" href="{{route('produtos')}}">Produtos</a>
-            <a class="navbar-brand" href="{{route('categorias')}}">Categorias</a>
-            <a class="navbar-brand" href="{{route('clientes')}}">Clientes</a>
-        </nav>
-        <div class="content-page">
-            <!-- Start content -->
-            <div class="content">
-                <div class="container">
-                    @include('flash-messages')
-                    <!-- Page Content -->
-                    @yield('content')
-
-                </div> <!-- container -->
-
-            </div> <!-- content -->
-            <footer class="footer text-right">
-                    Gegeu 2020
-            </footer>
-        </div>
-	</body>
+    <title>Pra Mim É Chocolate</title>
+</head>
+<body>
+    <div class="flex-dashboard">
+        <sidebar>
+            <div class="sidebar-title">
+                <img src="./images/pramimechocolate-logo.png" alt="">
+                <h2>Pra Mim É Chocolate</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li>
+                        <i class="fas fa-home"></i>
+                        <a href="/">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="{{route('pedidos')}}">Pedidos</a>
+                    </li>
+                    <li>
+                        <a href="{{route('produtos')}}">Produtos</a>
+                    </li>
+                    <li>
+                        <a href="{{route('categorias')}}">Categorias</a>
+                    </li>
+                    <li>
+                        <a href="{{route('clientes')}}">Clientes</a>
+                    </li>
+                </ul>
+            </div>
+        </sidebar>
+        <main>
+            <header>
+                <a href="/"> <i class="fas fa-home"></i> Dashboard</a>
+                <a href="#"> <i class="fas fa-sign-out-alt"></i> Sair</a>
+            </header>
+            <div class="main-content">
+                <div class="panel">
+                    <div class="container">
+                        @include('flash-messages')
+                        <!-- Page Content -->
+                        @yield('content')
+    
+                    </div> <!-- container -->
+                </div>
+                
+            </div>
+        </main>
+    </div>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/fontawesome/js/all.min.js"></script>
+</body>
 </html>
-
-<style>
-    .content {
-        margin-top: 10px;
-    }
-</style>
