@@ -27,7 +27,7 @@
     <div class="flex-dashboard">
         <sidebar>
             <div class="sidebar-title">
-                <img src="./images/pramimechocolate-logo.png" alt="">
+                <img src="{{ asset('/images/pramimechocolate-logo.png')}}" alt="">
                 <h2>Pra Mim É Chocolate</h2>
             </div>
             <div class="menu">
@@ -54,7 +54,7 @@
         <main>
             <header>
                 <a href="/"> <i class="fas fa-home"></i> Dashboard</a>
-                <a href="#"> <i class="fas fa-sign-out-alt"></i> Sair</a>
+                <a href="/logout"> <i class="fas fa-sign-out-alt"></i> Sair</a>
             </header>
             <div class="main-content">
                 <div class="panel">
