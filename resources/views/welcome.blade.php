@@ -14,7 +14,7 @@
             <div class="login-form-wrapper">
                 <div class="login-title">
                     <h2>Login</h2>
-                    <a href="#">Cadastro</a>
+                    <!-- <a href="#">Cadastro</a> -->
                 </div>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf

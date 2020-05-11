@@ -17,8 +17,10 @@ class CreatePedidosTable extends Migration
             $table->id();
             $table->date('data_pedido');
             $table->date('data_entrega');
-            $table->decimal('valor',  8, 2);
+            $table->decimal('valor_total',  8, 2);
+            $table->integer('quantidade');
             $table->integer('status');
+            $table->boolean('tipo_entrega');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('endereco_id');
 

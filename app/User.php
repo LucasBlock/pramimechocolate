@@ -10,6 +10,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $with = [
+        'endereco'
+    ];
+
+    public function endereco()
+    {
+        return $this->hasOne('App\Endereco');
+    }
     /**
      * The attributes that are mass assignable.
      *

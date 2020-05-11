@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/all.css')}}">
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}">
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome/js/all.min.js')}}">
 
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
         <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
@@ -15,7 +15,12 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+        <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{ asset('plugins/fontawesome/js/all.min.js')}}"></script>
+        <script
+			  src="https://code.jquery.com/jquery-3.5.1.min.js"
+			  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+			  crossorigin="anonymous"></script>
     <title>Pra Mim É Chocolate</title>
 </head>
 <body>
@@ -29,7 +34,7 @@
                 <ul>
                     <li>
                         <i class="fas fa-home"></i>
-                        <a href="/">Dashboard</a>
+                        <a href="/dashboard">Dashboard</a>
                     </li>
                     <li>
                         <a href="{{route('pedidos')}}">Pedidos</a>
@@ -57,14 +62,12 @@
                         @include('flash-messages')
                         <!-- Page Content -->
                         @yield('content')
-    
+
                     </div> <!-- container -->
                 </div>
-                
+
             </div>
         </main>
     </div>
-    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="plugins/fontawesome/js/all.min.js"></script>
 </body>
 </html>

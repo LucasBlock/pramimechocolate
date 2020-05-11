@@ -11,6 +11,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('/produtos', 'ProdutoController@index')->name('produtos');
     Route::get('/produtos/novo', 'ProdutoController@create')->name('produtos.novo');
+    Route::get('/produtos/{id}', 'ProdutoController@show')->name('produtos.visualizar');
     Route::get('/produtos/{id}/editar', 'ProdutoController@edit')->name('produtos.editar');
     Route::get('/produtos/{id}/delete', 'ProdutoController@destroy')->name('produtos.deletar');
     Route::post('/produtos/{id}', 'ProdutoController@update')->name('produtos.atualizar');
@@ -32,12 +33,11 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/categorias', 'CategoriaController@store')->name('categorias.salvar');
 
     Route::get('/pedidos', 'PedidoController@index')->name('pedidos');
-    Route::get('/pedidos/{id}', 'PedidoController@show');
-    Route::put('/pedidos/{id}', 'PedidoController@update');
-    Route::get('/pedidos/novo', 'PedidoController@create');
-    Route::get('/pedidos/{id}/editar', 'PedidoController@edit');
-    Route::post('/pedidos', 'PedidoController@store');
-    Route::get('/pedidos/{id}/delete', 'PedidoController@destroy');
+    Route::get('/pedidos/novo', 'PedidoController@create')->name('pedidos.novo');
+    Route::get('/pedidos/{id}/editar', 'PedidoController@edit')->name('pedidos.editar');
+    Route::get('/pedidos/{id}/delete', 'PedidoController@destroy')->name('pedidos.deletar');
+    Route::put('/pedidos/{id}', 'PedidoController@update')->name('pedidos.atualizar');
+    Route::post('/pedidos', 'PedidoController@store')->name('pedidos.salvar');
 
     Route::get('/clientes', 'UserController@index')->name('clientes');
     Route::get('/clientes/novo', 'UserController@create')->name('clientes.novo');

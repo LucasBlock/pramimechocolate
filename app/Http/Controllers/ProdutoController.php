@@ -73,9 +73,8 @@ class ProdutoController extends Controller
     public function show($id)
     {
         $produto = Produto::findOrFail($id);
-        return response()->json(Produto::all());
 
-        return view('produto.show', compact(['produto']));
+        return response()->json($produto);
     }
 
     /**
