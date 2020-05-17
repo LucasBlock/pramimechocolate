@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Endereco;
+use App\Http\Requests\UserStoreUpdateRequest;
+
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
@@ -31,7 +33,7 @@ class UserController extends Controller
         return view('usuario.form');
     }
 
-    public function store(Request $request)
+    public function store(UserStoreUpdateRequest $request)
     {
         $cliente = new User();
 
@@ -73,7 +75,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserStoreUpdateRequest $request, $id)
     {
         $cliente = User::find($id);
 

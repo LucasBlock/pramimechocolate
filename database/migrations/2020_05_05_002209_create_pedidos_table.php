@@ -19,7 +19,7 @@ class CreatePedidosTable extends Migration
             $table->date('data_entrega');
             $table->decimal('valor_total',  8, 2);
             $table->integer('quantidade');
-            $table->integer('status');
+            $table->integer('status')->default(1); //em andamento
             $table->boolean('tipo_entrega');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('endereco_id');

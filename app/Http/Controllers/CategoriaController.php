@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categoria;
 use App\Produto;
+use App\Http\Requests\CategoriaStoreUpdateRequest;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -36,7 +37,7 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoriaStoreUpdateRequest $request)
     {
         Categoria::create($request->all());
 
@@ -77,7 +78,7 @@ class CategoriaController extends Controller
      * @param  \App\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoriaStoreUpdateRequest $request, $id)
     {
         $categoria = Categoria::findOrFail($id);
 

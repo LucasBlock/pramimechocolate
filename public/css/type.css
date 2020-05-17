@@ -1,0 +1,51 @@
+.container_input_toggle{
+    display: flex;
+}
+
+.container_input_toggle .label_input_toggle{
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.circle_check_togle{
+    height: 14px;
+    width: 19px;
+    background: #ffffff;
+    position: absolute;
+    border-radius: 18px;
+    left: 1px;
+    transition: 0.2s;
+    box-shadow: 1px 0px 2px 0px #000000ad;
+}
+
+.toggle_input:checked+label .circle_check_togle{
+    left: 15px;
+}
+.toggle_input:checked+label{
+    background: #5bd164;
+    border: solid 1px #4CAF50;
+}
+
+.toggle_input:disabled+label{
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.toggle_input{
+    display: none;
+}
+
+.button_toggle_label{
+    transition: 0.2s;
+    background: #b0b0b0;
+    height: 14px;
+    width: 34px;
+    border-radius: 16px;
+    position: relative;
+    border: solid 1px #8d8d8d;
+    padding: 1px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/*fim do componente de chackbox*/

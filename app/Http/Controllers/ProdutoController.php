@@ -46,19 +46,11 @@ class ProdutoController extends Controller
             $allowedfileExtension=['pdf','jpg','png','docx'];
             $files = $request->file('imagens');
             foreach($files as $file){
-
-                $filename = $file->getClientOriginalName();
-                $extension = $file->getClientOriginalExtension();
-                $check=in_array($extension,$allowedfileExtension);
-                if($check){
-                    foreach ($request->imagens as $photo) {
-                        $filename = $photo->store('imagens');
-                        Imagem::create([
-                            'produto_id' => $produto->id,
-                            'url' => $filename
-                        ]);
-                    }
-                }
+                $filename = 'storage/'.$file->store('imagens', 'public');
+                $imagem = Imagem::create([
+                    'produto_id' => $produto->id,
+                    'url' => $filename
+                ]);
             }
         }
         return redirect()->route('produtos')->with('success', 'Produto criado com sucesso');

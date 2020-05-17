@@ -23,11 +23,8 @@
                 <span class="input-group-text">R$</span>
             </div>
             <input type="text" class="form-control" name="preco" type="text" max="255" required placeholder="Preço" aria-label="">
-            <div class="input-group-append">
-                <span class="input-group-text">.00</span>
-            </div>
         </div>
-        <div class="input-group mb-3 form-group">
+        <!-- <div class="input-group mb-3 form-group">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
@@ -35,7 +32,7 @@
                 <input type="file" class="custom-file-input" name="imagens[]" enctype="multipart/form-data" multiple="multiple" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                 <label class="custom-file-label" for="inputGroupFile01">Escolha os arquivos</label>
             </div>
-        </div>
+        </div> -->
 
         <div class="input-group mb-3 form-group">
             <div class="input-group-prepend">

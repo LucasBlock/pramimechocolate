@@ -36,7 +36,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/pedidos/novo', 'PedidoController@create')->name('pedidos.novo');
     Route::get('/pedidos/{id}/editar', 'PedidoController@edit')->name('pedidos.editar');
     Route::get('/pedidos/{id}/delete', 'PedidoController@destroy')->name('pedidos.deletar');
-    Route::put('/pedidos/{id}', 'PedidoController@update')->name('pedidos.atualizar');
+    Route::post('/pedidos/{id}', 'PedidoController@update')->name('pedidos.atualizar');
     Route::post('/pedidos', 'PedidoController@store')->name('pedidos.salvar');
 
     Route::get('/clientes', 'UserController@index')->name('clientes');

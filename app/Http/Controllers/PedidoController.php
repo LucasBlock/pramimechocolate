@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Pedido;
 use App\User;
 use App\Produto;
+use App\PedidoItem;
+use App\Endereco;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -47,21 +49,30 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        if (!isset($request->produtos)){
+            return redirect()->route('pedidos.novo')->with('error','Adicione algum produto');
+        }
+        $endereco = Endereco::where('user_id', $request->user_id)->get()->first();
 
-        // foreach()
+        $pedido = new Pedido();
+        $pedido->fill($request->all());
+
+        $pedido->endereco_id = $endereco->id;
+        $pedido->status = 1;
+
+        $pedido->tipo_entrega = isset($request->tipo_entrega) ? true : false;
+
+        $pedido->save();
+
+        foreach($request->produtos as $k => $v){
+            $pedido_item = new PedidoItem();
+            $pedido_item->fill(['produto_id' => $k, 'pedido_id' => $pedido->id, 'quantidade' => $v]);
+            $pedido_item->save();
+        }
+
+        return redirect()->route('pedidos')->with('success', 'Pedido criado com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Pedido  $pedido
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pedido $pedido)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -69,31 +80,60 @@ class PedidoController extends Controller
      * @param  \App\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pedido $pedido)
+    public function edit($id)
     {
-        //
+        $pedido = Pedido::find($id);
+
+        if (!$pedido) {
+            return redirect()->routes('pedidos')->with('error', 'Pedido não encontrado');
+        }
+
+        $pedido_itens = PedidoItem::where('pedido_id', $id)
+                                    ->get();
+
+        return view('pedido.edit', compact(['pedido', 'pedido_itens']));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pedido  $pedido
+     * @param  integer $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pedido $pedido)
+    public function update(Request $request, $id)
     {
-        //
+        $pedido = Pedido::find($id);
+
+        if (!$pedido) {
+            return redirect()->route('pedidos')->with('error', 'Pedido não encontrado');
+        }
+
+        $pedido->fill($request->all());
+        if (!isset($request->tipo_entrega)){
+            $pedido->tipo_entrega = 0;
+        }
+        $pedido->save();
+
+        return redirect()->route('pedidos')->with('success', 'Pedido atualizado com sucesso');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pedido  $pedido
+     * @param  integer  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pedido $pedido)
+    public function destroy($id)
     {
-        //
+        $pedido = Pedido::find($id);
+
+        if (!$pedido) {
+            return redirect()->route('pedidos')->with('error', 'Pedido não encontrado');
+        }
+
+        $pedido->delete();
+
+        return redirect()->route('pedidos')->with('success', 'Pedido excluido com sucesso');
     }
 }

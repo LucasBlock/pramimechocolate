@@ -11,6 +11,17 @@ class CategoriaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Categoria::class, 1)->create([
+            'nome' => 'Bolos',
+        ]);
+        factory(App\Categoria::class, 1)->create([
+            'nome' => 'Bombons',
+        ]);
+        factory(App\Categoria::class, 1)->create([
+            'nome' => 'Doces de festas',
+        ]);
+        factory(App\Categoria::class, 1)->create([
+            'nome' => 'Gelados',
+        ]);
     }
 }

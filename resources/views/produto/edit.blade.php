@@ -27,7 +27,7 @@
                 <span class="input-group-text">.00</span>
             </div>
         </div>
-        <div class="input-group mb-3 form-group">
+        <!-- <div class="input-group mb-3 form-group">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
@@ -35,7 +35,7 @@
                 <input type="file" class="custom-file-input" name="imagens[]" enctype="multipart/form-data" multiple="multiple" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                 <label class="custom-file-label" for="inputGroupFile01">Escolha os arquivos</label>
             </div>
-        </div>
+        </div> -->
 
         <div class="input-group mb-3 form-group">
             <div class="input-group-prepend">
@@ -50,6 +50,12 @@
                     @endif
                 @endforeach
             </select>
+        </div>
+
+        <div class="container container-images">
+            @foreach($produto->imagens as $imagem)
+                <img src="{{asset($imagem->url)}}" class="col-md-12 img" >
+            @endforeach
         </div>
         <button class="btn btn-primary" type="submit">Enviar</button>
     </form>
@@ -67,6 +73,14 @@
         .list {
             display: flex;
             justify-content: space-between;
+        }
+
+        .container-images {
+            margin-bottom: 10px;
+        }
+        .img {
+            width: 200px;
+            height: 200px;
         }
     </style>
 @endsection

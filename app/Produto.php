@@ -13,9 +13,15 @@ class Produto extends Model
     ];
 
     protected $with = [
-        'categoria'
+        'categoria',
+        'imagens',
     ];
 
+
+    public function imagens()
+    {
+        return $this->hasMany(Imagem::class);
+    }
     public function categoria()
     {
         return $this->belongsTo(Categoria::class);
